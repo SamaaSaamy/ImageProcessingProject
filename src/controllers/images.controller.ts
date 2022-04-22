@@ -5,7 +5,7 @@ import path from "path";
 const resizeImage = async (
     request: express.Request,
     response: express.Response
-) => {
+):Promise<void> => {
     try {
         const imageName = request.query.imageName;
         const imagePath = path.resolve(`./images/${imageName}.jpg`);

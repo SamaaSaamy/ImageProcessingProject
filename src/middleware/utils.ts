@@ -6,10 +6,10 @@ const checkValues = async (
     request: express.Request,
     response: express.Response,
     next: express.NextFunction
-) => {
+): Promise<void> => {
     try {
-        const height: Number = Number(request.query.height);
-        const width: Number = Number(request.query.width);
+        const height =  Number(request.query.height);
+        const width = Number(request.query.width);
 
         if (!height || !width) {
             response.status(304);
@@ -24,7 +24,7 @@ const checkImageAlreadyExist = async (
     request: express.Request,
     response: express.Response,
     next: express.NextFunction
-) => {
+):Promise<void> => {
     try {
         const Imagepath = path.resolve(
             `./ResizedImages/${request.query.imageName}_${Number(
@@ -51,7 +51,7 @@ const checkImageName = async (
     request: express.Request,
     response: express.Response,
     next: express.NextFunction
-) => {
+):Promise<void> => {
     try {
         const imageName = request.query.imageName;
         const imagePath = path.resolve(`./images/${imageName}.jpg`);
